@@ -1,2 +1,8 @@
 # LaTeX output
 return-oriented_programming.pdf
+
+# Generated demo files
+demo/echo
+demo/gadgets.txt
+demo/generator.py
+demo/payload.bin
