@@ -1,0 +1,15 @@
+display /8i     $eip
+
+display /16wx   $esp
+display /16wx   $ebp
+
+display /x      $edi
+display /x      $esi
+display /x      $edx
+display /x      $ecx
+display /x      $ebx
+display /x      $eax
+display         $eflags
+
+break echo
+run < payload.bin

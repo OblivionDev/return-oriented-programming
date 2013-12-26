@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "J A C K P O T !!"
+echo "This shell script runs with `whoami`'s permissions:"
+id
