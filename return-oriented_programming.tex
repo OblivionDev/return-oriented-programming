@@ -1,0 +1,49 @@
+% hitex:master
+\documentclass{beamer}
+\usepackage{latexsym}
+\usepackage{marvosym}
+\usepackage{fourier}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{graphicx}
+
+\usetheme{Warsaw}
+\usecolortheme{dolphin}
+\beamertemplatenavigationsymbolsempty
+\setcounter{tocdepth}{2}
+%\beamerdefaultoverlayspecification{<+->}
+
+\AtBeginSection[]{\frame{\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/show/hide]}}
+%\AtBeginSection[]{\frame{\tableofcontents[currentsection]}}
+
+\title[Return-oriented programming]{\huge{Return-oriented programming}}
+\author{Sebastian Neuser}
+\institute{
+    \Large{Seminar: "`IT-Sicherheit"'}\\[0.25cm]
+    \small{Universit\"at Siegen\\
+           Naturwissenschaftlich-Technische Fakult\"at\\
+           Department: Elektrotechnik und Informatik}
+}
+\date{\today}
+
+\begin{document}
+    \frame{\titlepage}
+    \frame{\tableofcontents[sections=1-2]}
+    \frame{\tableofcontents[sections=3-5]}
+
+    \include{introduction}
+    \include{rop}
+    \include{demonstration}
+    \include{countermeasures}
+    \include{conclusion}
+
+    \section{}
+    \frame{
+        \begin{center}
+        {\Large\bfseries Vielen Dank f"ur die Aufmerksamkeit.} \\[5mm]
+        Fragen?
+        \end{center}
+    }
+\end{document}
+
