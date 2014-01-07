@@ -1,0 +1,90 @@
+% vim macros and mappings
+% :let @x='0xyyu@"j'
+%j6@x
+%:map <F12> :wa<CR>:!hitex.pl TEMPLATE<CR><CR>
+%:map <F11> :wa<CR>:!hitex.pl -a TEMPLATE<CR><CR>
+%:map <F10> :!xpdf -remote latex TEMPLATE.pdf &> /dev/null &<CR><CR>
+%:map <F9> :!evince TEMPLATE.pdf &> /dev/null &<CR><CR>
+%:imap <F11> <Esc>:wa<CR>:!hitex.pl -a TEMPLATE<CR><CR>a
+%:imap <F12> <Esc>:wa<CR>:!hitex.pl TEMPLATE<CR><CR>a
+
+
+% some useful macros
+\newcommand{\ignore}[1]{}
+\newcommand{\lto}{\ensuremath{\leadsto}}
+\newcommand{\lvsp}{\ \\[7mm]}
+\newcommand{\nl}{\ \\}
+\newcommand{\nvsp}{\vspace{-3ex}}
+\newcommand{\see}[1]{($\to$\,\ref{#1})}
+\newcommand{\svsp}{\ \\[2mm]}
+\newcommand{\tab}{\rule{2em}{0pt}}
+\newcommand{\todo}{\textbf{\textcolor{cyan}{TODO}}}
+\newcommand{\vsp}{\ \\[5mm]}
+
+\newenvironment{asm}{\begin{tabbing}tabs\=mnemonic\=\kill\ttfamily}{\end{tabbing}}
+
+
+% function-/program-/library names and code snippets
+\newcommand{\pgm}[1]{\texttt{#1}}
+
+\newcommand{\ccr}{\pgm{CR}}
+\newcommand{\clf}{\pgm{LF}}
+\newcommand{\cnull}{\pgm{'\textbackslash0'}}
+\newcommand{\eof}{\pgm{EOF}}
+\newcommand{\gcc}{\pgm{gcc}}
+\newcommand{\gdb}{\pgm{gdb}}
+\newcommand{\cgets}{\pgm{gets}}
+\newcommand{\libc}{\pgm{libc}}
+\newcommand{\ofp}{\pgm{-fomit-frame-pointer}}
+\newcommand{\readlower}{\pgm{read\_lower}}
+\newcommand{\ropc}{\pgm{ropc}}
+\newcommand{\ropgadget}{\pgm{ROPgadget}}
+\newcommand{\system}{\pgm{system()}}
+
+\newcommand{\add}{\pgm{add}}
+\newcommand{\call}{\pgm{call}}
+\newcommand{\enter}{\pgm{enter}}
+\newcommand{\leave}{\pgm{leave}}
+\newcommand{\mov}{\pgm{mov}}
+\newcommand{\movl}{\pgm{movl}}
+\newcommand{\nop}{\pgm{nop}}
+\newcommand{\ret}{\pgm{ret}}
+\newcommand{\sub}{\pgm{sub}}
+\newcommand{\pop}{\pgm{pop}}
+\newcommand{\push}{\pgm{push}}
+
+\newcommand{\eax}{\pgm{\%eax}}
+\newcommand{\ebx}{\pgm{\%ebx}}
+\newcommand{\ecx}{\pgm{\%ecx}}
+\newcommand{\edx}{\pgm{\%edx}}
+\newcommand{\esi}{\pgm{\%esi}}
+\newcommand{\edi}{\pgm{\%edi}}
+\newcommand{\ebp}{\pgm{\%ebp}}
+\newcommand{\esp}{\pgm{\%esp}}
+\newcommand{\eip}{\pgm{\%eip}}
+\newcommand{\efl}{\pgm{\%eflags}}
+
+
+% other names
+\newcommand{\name}[1]{\textsl{#1}}
+
+\newcommand{\arm}{\name{ARM}}
+\newcommand{\ia}{\name{IA-32}}
+\newcommand{\morris}{\name{Morris worm}}
+\newcommand{\ropeme}{\name{ROPEME}}
+\newcommand{\ropdefender}{\name{ROPdefender}}
+\newcommand{\sparc}{\name{SPARC}}
+\newcommand{\sguard}{\name{StackGuard}}
+\newcommand{\wx}{\name{W$\oplus$X}}
+\newcommand{\xes}{\name{x86}}
+
+
+% common terms
+\newcommand{\att}{AT\&T}
+\newcommand{\bo}{buffer overflow}
+\newcommand{\canaries}{stack canaries}
+\newcommand{\rtl}{return-to-\libc}
+\newcommand{\ro}{return-oriented}
+\newcommand{\roe}{return-oriented exploitation}
+\newcommand{\rop}{return-oriented programming}
+\newcommand{\shadow}{shadow stack}
