@@ -37,7 +37,7 @@ permissions: $(TARGET)
 gadgets $(GADGETS_FILE): $(TARGET)
 	$(ROPGADGET) -file $(TARGET) -g > $(GADGETS_FILE)
 	sed -r 's/\x1B\[[09][1-4]?m//g' -i $(GADGETS_FILE)
-	grep "p += " $(GADGETS_FILE) | grep --color=always "0a"
+	-grep "p += " $(GADGETS_FILE) | grep --color=always "0a"
 
 
 # Create payload generator script
