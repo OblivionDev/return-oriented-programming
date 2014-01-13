@@ -1,4 +1,18 @@
-#!/bin/sh
-echo "J A C K P O T !!"
-echo "This shell script runs with `whoami`'s permissions:"
+#!/bin/bash
+
+red='\e[0;31m' # Red
+grn='\e[0;32m' # Green
+ylw='\e[0;33m' # Yellow
+pur='\e[0;35m' # Purple
+cyn='\e[0;36m' # Cyan
+wht='\e[0;37m' # White
+def='\e[m'     # default color
+
+echo
+echo -e "                    ${red}J ${grn}A ${ylw}C ${pur}K ${cyn}P ${wht}O ${red}T ${grn}!!${def}"
+echo
+echo -e "This shell script runs with ${red}`whoami`${def}'s permissions:"
+echo
+echo -e "${grn}$ id${def}"
 id
+echo
