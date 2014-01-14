@@ -11,5 +11,5 @@ display /x      $ebx
 display /x      $eax
 display         $eflags
 
-break echo
-run < payload.bin
+break main
+run exploit < payload.bin
