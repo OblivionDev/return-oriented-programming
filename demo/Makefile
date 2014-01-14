@@ -28,6 +28,9 @@ compile: $(TARGET)
 $(TARGET): $(SOURCE)
 	gcc -g -static -fno-stack-protector -o $@ $@.c
 
+protected: $(SOURCE)
+	gcc -g -static -fstack-protector -o $(TARGET) $(SOURCE)
+
 # Set SETUID bit for root
 permissions: $(TARGET)
 	chown root $<
