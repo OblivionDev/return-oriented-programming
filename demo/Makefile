@@ -1,7 +1,7 @@
 # vim: noexpandtab tabstop=4 shiftwidth=4
 
 # The program to exploit
-SOURCE=log.c
+SOURCES=$(wildcard *.c)
 TARGET=log
 
 # Size of the buffer to overflow
@@ -25,11 +25,11 @@ compile: $(TARGET)
 
 
 # Compile the targets one by one
-$(TARGET): $(SOURCE)
-	gcc -g -static -fno-stack-protector -o $@ $@.c
+$(TARGET): $(SOURCES)
+	gcc -g -static -fno-stack-protector -o $@ $^
 
-protected: $(SOURCE)
-	gcc -g -static -fstack-protector -o $(TARGET) $(SOURCE)
+protected: $(SOURCES)
+	gcc -g -static -fstack-protector -o $(TARGET) $^
 
 # Set SETUID bit for root
 permissions: $(TARGET)
