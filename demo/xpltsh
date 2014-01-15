@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 red='\e[0;31m' # Red
 grn='\e[0;32m' # Green
@@ -8,11 +8,17 @@ cyn='\e[0;36m' # Cyan
 wht='\e[0;37m' # White
 def='\e[m'     # default color
 
+print_colored() {
+    bash -c "echo -e $1"
+}
+
+
+
 echo
-echo -e "                    ${red}J ${grn}A ${ylw}C ${pur}K ${cyn}P ${wht}O ${red}T ${grn}!!${def}"
+print_colored "\"                   ${red}J ${grn}A ${ylw}C ${pur}K ${cyn}P ${wht}O ${red}T ${grn}!!${def}\""
 echo
-echo -e "This shell script runs with ${red}`whoami`${def}'s permissions:"
+print_colored "\"This shell script runs with ${red}`whoami`${def}'s permissions:\""
 echo
-echo -e "${grn}$ id${def}"
+print_colored "\"${grn}$ id${def}\""
 id
 echo
