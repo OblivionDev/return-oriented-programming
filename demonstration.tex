@@ -1,10 +1,48 @@
 \section{Demonstration}
 \subsection{ROPgadget -- a ROP compiler}
+    \frame{
+        \frametitle{\ropgadget}
+        \begin{itemize}
+            \item finds and lists gadgets that are available in a specified binary
+            \item constructs \shellcode, a \payload\ that opens a port or user-specified opcodes
+            \item prints out python commands that can be embedded in a \payload\ generation script
+            \item searches and prints out addresses of instructions/opcodes and strings in a binary
+        \end{itemize}
+    }
 
 
 
 \subsection{Stupid vulnerable program}
+    \frame{
+        \frametitle{log.h}
+        \scriptsize
+        \inputminted[linenos,tabsize=4]{c}{demo/log.h}
+    }
+
+    \frame{
+        \frametitle{log.c}
+        \scriptsize
+        \inputminted[linenos,tabsize=4]{c}{demo/log.c}
+    }
+
+    \frame{
+        \frametitle{io.c}
+        \scriptsize
+        \inputminted[linenos,tabsize=4]{c}{demo/io.c}
+    }
+
+    \frame{
+        \frametitle{util.c}
+        \scriptsize
+        \inputminted[linenos,tabsize=4]{c}{demo/util.c}
+    }
 
 
 
 \subsection{Showtime}
+    \frame{
+        \begin{center}
+            \Huge
+            Showtime!
+        \end{center}
+    }
