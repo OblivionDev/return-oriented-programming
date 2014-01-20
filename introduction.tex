@@ -25,14 +25,16 @@
 
 \frame{
     \frametitle{Why care?}
-    \begin{minipage}{0.9\textwidth}
     \begin{itemize}
-        \item $45\%$ of recorded security vulnerabilities: possible \bo s
-        \item \bo\ exploits have been used in numerous malicious software
-        \item ROP: probably the most advanced \bo\ exploitation technique
-        \item developed and refined over decades
+        \item $45\%$ of all recorded security vulnerabilities in Ubuntu: \\
+              \lto\ \bo\ vulnerabilities
+        \item \bo\ exploits have been implemented in numerous malicious programs across different platforms
+        \item Return-oriented programming:
+              \begin{itemize}
+                  \item probably the most advanced \bo\ exploitation technique so far
+                  \item developed and refined over decades
+              \end{itemize}
     \end{itemize}
-    \end{minipage}
 }
 
 
@@ -61,27 +63,27 @@
 
 \frame{
     \frametitle{Stack diagrams}
-    \begin{itemize}
-        \item Stack diagrams are depicted from the stack's top to bottom:
-              \begin{tikzpicture}
-                  \tikzset{x=2.5em, y=1.5em}
-                  \tikzstyle{mem}=[rectangle, draw, minimum width=6em, minimum height=1.5em]
+    Stack diagrams are depicted from the stack's top to bottom:
+    \begin{center}
+        \begin{tikzpicture}
+            \tikzset{x=2.5em, y=1.5em}
+            \tikzstyle{mem}=[rectangle, draw, minimum width=6em, minimum height=1.5em]
 
-                  \draw (0.0, 3.5)    node        (l0)    {pointers};
-                  \draw (2.5, 3.5)    node        (l1)    {addresses};
-                  \draw (5.0, 3.5)    node        (l2)    {values};
+            \draw (0.0, 3.5)    node        (l0)    {pointers};
+            \draw (2.5, 3.5)    node        (l1)    {addresses};
+            \draw (5.0, 3.5)    node        (l2)    {values};
 
-                  \draw (0.0, 2.0)    node        (esp0)  {stack top};
-                  \draw (2.5, 2.0)    node        (a2)    {0xbf8c73c0:};
-                  \draw (2.5, 1.0)    node        (a1)    {0xbf8c73c4:};
-                  \draw (2.5, 0.0)    node        (a0)    {0xbf8c73c8:};
-                  \draw (5.0, 2.0)    node[mem]   (s2)    {0x1337c0de};
-                  \draw (5.0, 1.0)    node[mem]   (s1)    {0xdeadc0de};
-                  \draw (5.0, 0.0)    node[mem]   (s0)    {0xdeadbeef};
+            \draw (0.0, 2.0)    node        (esp0)  {stack top};
+            \draw (2.5, 2.0)    node        (a2)    {0xbf8c73c0:};
+            \draw (2.5, 1.0)    node        (a1)    {0xbf8c73c4:};
+            \draw (2.5, 0.0)    node        (a0)    {0xbf8c73c8:};
+            \draw (5.0, 2.0)    node[mem]   (s2)    {0x1337c0de};
+            \draw (5.0, 1.0)    node[mem]   (s1)    {0xdeadc0de};
+            \draw (5.0, 0.0)    node[mem]   (s0)    {0xdeadbeef};
 
-                  \draw [->]      (esp0) -- (a2);
-              \end{tikzpicture}
-    \end{itemize}
+            \draw [->]      (esp0) -- (a2);
+        \end{tikzpicture}
+    \end{center}
 }
 
 \frame{
