@@ -6,7 +6,7 @@
             \item \aslr
             \item \pie
             \item take effect at load and link time during program startup
-            \item in the \pax\ implementation, addresses of segments are randomized:
+            \item in the \pax\ implementation, the addresses of the following segments are randomized:
                   \begin{itemize}
                       \item \pgm{.text}-segment of the binary (\lto\ executable code)
                       \item dynamically linked libraries
@@ -25,9 +25,11 @@
     \frame{
         \frametitle{Stack canaries -- Explanation}
         \begin{itemize}
-            \item canary: word between local variables of a function and the return address
-            \item function epilogue: canary word is verified by comparison to a stored value
-            \item word has changed \lto\ the canary is dead \Frowny\ \lto\ program is terminated
+            \item canary word: word between local variables of a function and the return address
+            \item during function prologue: canary word is placed on the stack and backed up in a different location
+            \item during function epilogue: canary word is verified through comparison with the stored value
+            \item word has changed (\lto\ the canary is dead \Frowny) \\
+                  \lto\ program is terminated with a warning message
             \item Example: \sguard
         \end{itemize}
     }
@@ -36,8 +38,8 @@
         \frametitle{Stack canaries -- Diagram}
         \begin{center}
             \begin{tikzpicture}
-                \tikzset{x=2.5em, y=1.5em}
-                \tikzstyle{mem}=[rectangle, draw, minimum width=6em, minimum height=1.5em]
+                \tikzset{x=2.5em, y=1.7em}
+                \tikzstyle{mem}=[rectangle, draw, minimum width=6em, minimum height=1.7em]
 
                 \draw (0.0, 4.0)    node        (esp)   {\esp};
                 \draw (0.0, 1.0)    node        (ebp)   {\ebp};
@@ -64,7 +66,7 @@
         \frametitle{Shadow stacks}
         \begin{itemize}
             \item \truss: maintains \shadow, which stores return addresses
-            \item function prologues: modified to store correct return address on the \shadow
+            \item function prologue: modified to push the correct return address onto the \shadow
             \item epilogue: compares return addresses
             \item mismatch \lto\ program termination and error signal
         \end{itemize}
