@@ -36,13 +36,13 @@
         \begin{itemize}
             \item data section in a process' address space
             \item contains local variables and buffers
-            \item arguments to function calls and the return address are also implemented using the stack
+            \item arguments to function calls and return addresses are also implemented using the stack
             \item \xes-family of CPUs:
                   \begin{itemize}
                       \item stack grows from higher to lower memory addresses
                       \item memory is addressed byte-wise \\
-                            \lto\ \push\ increments \esp\ by 4,
-                            \pop\ decrements \esp\ by 4
+                            \lto\ \push\ decrements \esp\ by 4,
+                            \pop\ increments \esp\ by 4
                   \end{itemize}
         \end{itemize}
     }
@@ -56,11 +56,11 @@
                   \begin{itemize}
                       \item save the base pointer \ebp
                       \item copy \esp\ to \ebp\ for \bpa
-                      \item decremented \esp\ to allocate stack memory for local variables
+                      \item decrement \esp\ to allocate stack memory for local variables
                   \end{itemize}
             \item function epilogue (\leave):
                   \begin{itemize}
-                      \item discard local variables by copying \esp\ to \ebp
+                      \item discard local variables by copying \ebp\ to \esp
                       \item restore \ebp\ by popping it from the stack
                   \end{itemize}
             \item \ret\ pops the return address off the stack and jumps to it
@@ -314,7 +314,7 @@
                 \draw (0.0, 6.0)    node        (esp)   {\esp};
                 \draw (0.0, 1.0)    node        (ebp)   {\ebp};
 
-                \draw (2.5, 6.0)    node        (a6)    {0xbffff8b8:};
+                \draw (2.5, 6.0)    node        (a6)    {0xbffff8b4:};
                 \draw (2.5, 5.0)    node        (a5)    {0xbffff8b8:};
                 \draw (2.5, 4.0)    node        (a4)    {0xbffff8bc:};
                 \draw (2.5, 3.2)    node        (a3)    {$\vdots$};
@@ -509,7 +509,7 @@
         \begin{itemize}
             \item attacker searches for short instruction sequences that perform small tasks and end with \ret \\
                   \lto\ for example \pop ing some values into registers
-            \item gadget: combination of one or more short instruction sequence addresses and the values that they \pop\ off the stack
+            \item gadget: combination of one or more addresses of short instruction sequences and the values that they should \pop\ off the stack
             \item \payload: chain of gadgets
         \end{itemize}
     }
@@ -518,17 +518,18 @@
         \frametitle{A very simple gadget}
         \begin{center}
             \begin{tikzpicture}
-                \tikzset{x=2.5em, y=1.5em, radius=2pt, fill=black}
-                \tikzstyle{mem}=[rectangle, draw, minimum width=6em, minimum height=1.5em]
+                \tikzset{x=2.5em, y=1.7em, radius=2pt, fill=black}
+                \tikzstyle{mem}=[rectangle, draw, minimum width=6em, minimum height=1.7em]
 
                 % annotations
                 \draw (0.0, 3.0)    node        (ret)   {ret addr};
 
                 % stack
-                \draw (3.0, 4.0)    node[mem]   (s4)    {\dots};
+                \draw (3.0, 5.0)    node[mem]   (s5)    {\dots};
+                \draw (3.0, 4.0)    node[mem]   (s4)    {\{prev gadg\}};
                 \draw (3.0, 3.0)    node[mem]   (s3)    {};
                 \draw (3.0, 2.0)    node[mem]   (s2)    {0x0000002a};
-                \draw (3.0, 1.0)    node[mem]   (s1)    {next gadg};
+                \draw (3.0, 1.0)    node[mem]   (s1)    {\{next gadg\}};
                 \draw (3.0, 0.0)    node[mem]   (s0)    {\dots};
 
                 % first fake stack frame
